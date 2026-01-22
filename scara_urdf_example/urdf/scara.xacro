@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="denso_simple">
+<robot name="scara_example">
 
   <!-- World -->
   <link name="world"/>
