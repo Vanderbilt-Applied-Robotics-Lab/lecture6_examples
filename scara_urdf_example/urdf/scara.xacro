@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<robot name="denso_simple">
+
+  <!-- World -->
+  <link name="world"/>
+
+  <joint name="joint_w" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- Base -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/base_link.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/base_link.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- J1 -->
+  <link name="J1">
+    <visual>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J1.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J1.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="J1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.2689" upper="2.2689" effort="1" velocity="3.086"/>
+  </joint>
+
+  <!-- J2 -->
+  <link name="J2">
+    <visual>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J2.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J2.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_2" type="revolute">
+    <parent link="J1"/>
+    <child link="J2"/>
+    <origin xyz="0.375 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.618" upper="2.618" effort="1" velocity="5.413"/>
+  </joint>
+
+  <!-- J3 -->
+  <link name="J3">
+    <visual>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J3.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J3.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_3" type="prismatic">
+    <parent link="J2"/>
+    <child link="J3"/>
+    <origin xyz="-0.375 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.1" upper="0.22" effort="1" velocity="1.9"/>
+  </joint>
+
+  <!-- J4 -->
+  <link name="J4">
+    <visual>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J4.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://scara_urdf_example/meshes/J4.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_4" type="revolute">
+    <parent link="J3"/>
+    <child link="J4"/>
+    <origin xyz="0.65 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.283" upper="6.283" effort="1" velocity="25.29"/>
+  </joint>
+
+</robot>
